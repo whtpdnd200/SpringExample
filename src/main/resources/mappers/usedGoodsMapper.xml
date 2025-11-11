@@ -5,6 +5,15 @@
 <mapper namespace="com.devwork.springexample.database.repository.UsedGoodsRepository">
     <select id="selectUsedGoodsList"
     resultType="com.devwork.springexample.database.domain.UsedGoods">
-        SELECT * FROM `used_goods`
+        SELECT
+            `id`
+            , `seller_id`
+            , `title`
+            , `price`
+            , `description`
+            , `created_at`
+            , `updated_at`
+            FROM
+                `used_goods`
     </select>
 </mapper>
