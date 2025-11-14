@@ -26,15 +26,23 @@ public class UserController {
     }
 
     @ResponseBody
-    // RequestMapping(value="/add", method=RequestMethod.POST)
+    //RequestMapping(value="/add", method=RequestMethod.POST)
     @PostMapping("/add")
     public String addUser(
             @RequestParam("name") String name
             , @RequestParam("birthday") String birthday
             , @RequestParam("email") String email
             , @RequestParam(value="introduce", required=false) String introduce) {
-        int count = userService.createUser(name, birthday, email, introduce);
-        return "입력 결과 : " + count;
+        //int count = userService.createUser(name, birthday, email, introduce);
+
+        User user = new User();
+        user.setName(name);
+        user.setYyyymmdd(birthday);
+        user.setEmail(email);
+        user.setIntroduce(introduce);
+
+        int count = userService.createUserByObject(user);
+        return "입력 결과 : " + count + " 저장된 index : " + user.getId();
     }
 
     @GetMapping("/form")
