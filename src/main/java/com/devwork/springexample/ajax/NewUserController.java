@@ -43,4 +43,23 @@ public class NewUserController {
 
         return "/ajax/userForm";
     }
+
+    // 전달받은 이메일이 이미 추가되었는지 확인하는 API
+    @ResponseBody
+    @GetMapping("/duplicate-email")
+    public Map<String, Boolean> idDuplicateEmail(@RequestParam("email") String email) {
+
+        Map<String, Boolean> resultMap = new HashMap<>();
+
+        if(userService.isDuplicateEmail(email)) {
+            // 중복됨
+            // {"isDuplicate" : true}
+            resultMap.put("isDuplicate", true);
+        } else {
+            // 중복 안됨
+            // {"isDuplicate" : false}
+            resultMap.put("isDuplicate", false);
+        }
+        return resultMap;
+    }
 }
