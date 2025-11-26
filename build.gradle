@@ -41,6 +41,15 @@ dependencies {
 
     //쿼리 로그 세팅
     implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0'
+
+    // Lombok 세팅
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    // jpa 세팅
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 }
 
 tasks.named('test') {
